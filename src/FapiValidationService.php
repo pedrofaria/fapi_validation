@@ -58,8 +58,5 @@ class FapiValidationService {
   public function executeValidation(array &$element, FormStateInterface &$form_state)
   {
     $this->manager->validate($element, $form_state);
-    // $config = $this->config->getEditable('fapi_validation_validators.settings');
-    // $config->set('validators', $element['#validators']);
-    // $config->save();
   }
 }
