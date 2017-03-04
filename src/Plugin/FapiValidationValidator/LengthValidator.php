@@ -25,7 +25,6 @@ class LengthValidator implements FapiValidationValidatorsInterface {
   public function validate(Validator $validator, array $element, FormStateInterface $form_state) {
     $params = $validator->getParams();
     $size = mb_strlen($validator->getValue());
-    // var_dump('uiiiiiiaaaa', $params, $size, $validator->getValue());
     if (count($params) == 1) {
       return $size == (int) $params[0];
     }
