@@ -4,6 +4,3 @@ services:
     parent: default_plugin_manager
     # tags:
     #   - {name: event_subscriber}
-  fapi_validation_service:
-    class: Drupal\fapi_validation\FapiValidationService
-    parent: default_plugin_manager
