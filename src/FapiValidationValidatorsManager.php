@@ -66,14 +66,39 @@ class FapiValidationValidatorsManager extends DefaultPluginManager implements Ev
       if (!$this->hasValidator($validator->getName())) {
         // @TODO throw Validator not found
       }
+
       $plugin = $this->getDefinition($validator->getName());
       $instance = $this->createInstance($plugin['id']);
 
       if (!$instance->validate($validator, $element, $form_state)) {
-        $error_message = \t($plugin['error_message'], ['%field' => $element['#title']]);
+        $error_message = $this->processErrorMessage($validator, $plugin, $element);
         $form_state->setErrorByName(implode('][', $element['#parents']), $error_message);
       }
     }
+  }
+
+  protected function processErrorMessage(Validator $validator, array $plugin, array $element) {
+    // User defined error callback?
+    if ($validator->hasErrorCallbackDefined()) {
+      return call_user_func_array($validator->getErrorCallback(), [$validator, $element]);
+    }
+    // User defined error message?
+    else if ($validator->hasErrorMessageDefined()) {
+      $message = $validator->getErrorMessage();
+    }
+    // Plugin defined error callback?
+    else if ($plugin['error_callback'] !== null) {
+      return call_user_func_array([$plugin['class'], $plugin['error_callback']], [$validator, $element]);
+    }
+    // Plugin defined error message?
+    else if ($plugin['error_message'] !== null) {
+      $message = $plugin['error_message'];
+    }
+    else {
+      $message = "Unespecified validator error message for field %field.";
+    }
+
+    return \t($message, ['%field' => $element['#title']]);
   }
 
 }

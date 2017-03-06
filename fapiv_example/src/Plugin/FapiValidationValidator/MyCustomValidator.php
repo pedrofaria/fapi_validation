@@ -14,7 +14,7 @@ use Drupal\fapi_validation\Validator;
 /**
  * @FapiValidationValidator(
  *   id = "custom_validator",
- *   error_message = "Custom validation at field %field failed!"
+ *   error_callback = "processError"
  * )
  */
 class MyCustomValidator implements FapiValidationValidatorsInterface {
@@ -24,6 +24,14 @@ class MyCustomValidator implements FapiValidationValidatorsInterface {
    */
   public function validate(Validator $validator, array $element, FormStateInterface $form_state) {
     return $validator->getValue() == 'JonhDoe';
+  }
+
+  public static function processError(Validator $validator, array $element) {
+    $params = [
+      '%value' => $validator->getValue(),
+      '%field' => $element['#title']
+    ];
+    return \t("You must enter 'JonhDoe' as value and not '%value' at field %field", $params);
   }
 
 }

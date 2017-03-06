@@ -16,17 +16,17 @@ use Drupal\Component\Annotation\Plugin;
 class FapiValidationValidator extends Plugin {
 
   /**
-   * The validator name.
-   *
-   * @var string
-   */
-  protected $name;
-
-  /**
    * The error message
    *
    * @var string
    */
   protected $error_message;
+
+  /**
+   * The callback for error messages
+   *
+   * @var string
+   */
+  protected $error_callback;
 
 }

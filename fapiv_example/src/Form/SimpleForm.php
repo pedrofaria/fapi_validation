@@ -44,7 +44,10 @@ class SimpleForm extends FormBase {
       '#type' => 'textfield',
       '#title' => $this->t('Name'),
       '#description' => $this->t('The Value should be JonhDoe.'),
-      '#validators' => ['length[7]', 'custom_validator'],
+      '#validators' => [
+        ['rule' => 'length[7]', 'error' => 'Wrong name size of field %field.'],
+        'custom_validator'
+      ],
       '#required' => TRUE,
     ];
 
