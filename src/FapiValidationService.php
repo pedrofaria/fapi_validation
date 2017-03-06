@@ -7,19 +7,6 @@ use Drupal\Core\Form\FormStateInterface;
 
 
 class FapiValidationService {
-
-  /**
-   * @var \Drupal\fapi_validation\FapiValidationValidatorsManager.
-   */
-  protected $manager;
-
-  public static function create(ContainerInterface $container) {
-    return new static($container->get('plugin.manager.fapi_validation_validators'));
-  }
-
-  public function __construct(FapiValidationValidatorsManager $manager) {
-    $this->manager = $manager;
-  }
   /**
    * Process element validators and filters.
    *
@@ -51,12 +38,7 @@ class FapiValidationService {
 
   static public function validate(array &$element, FormStateInterface &$form_state)
   {
-    $instance = static::create(\Drupal::getContainer());
-    $instance->executeValidation($element, $form_state);
-  }
-
-  public function executeValidation(array &$element, FormStateInterface &$form_state)
-  {
-    $this->manager->validate($element, $form_state);
+    $manager = \Drupal::service('plugin.manager.fapi_validation_validators');
+    $manager->validate($element, $form_state);
   }
 }
