@@ -65,6 +65,7 @@ class FapiValidationValidatorsManager extends DefaultPluginManager implements Ev
 
       if (!$this->hasValidator($validator->getName())) {
         // @TODO throw Validator not found
+        throw new \LogicException("Invalid validator name '{$validator->getName()}'.");
       }
 
       $plugin = $this->getDefinition($validator->getName());
