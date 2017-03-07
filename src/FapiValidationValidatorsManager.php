@@ -8,6 +8,7 @@ namespace Drupal\fapi_validation;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\fapi_validation\Validator;
@@ -16,7 +17,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * A plugin manager for message plugins.
+ * A plugin manager for Fapi Validaton Validators Plugin.
  */
 class FapiValidationValidatorsManager extends DefaultPluginManager implements EventSubscriberInterface {
 
@@ -52,11 +53,23 @@ class FapiValidationValidatorsManager extends DefaultPluginManager implements Ev
     return $events;
   }
 
+  /**
+   * Check if Valildator Plugin exists
+   *
+   * @param  string  $id Validators Name
+   * @return boolean
+   */
   public function hasValidator(string $id) {
     return in_array($id, array_keys($this->getDefinitions()));
   }
 
-  public function validate(&$element, &$form_state) {
+  /**
+   * Execute validation
+   *
+   * @param array              &$element    Form Element
+   * @param FormStateInterface &$form_state Form State Object
+   */
+  public function validate(array &$element, FormStateInterface &$form_state) {
     $def = $element['#validators'];
 
     foreach ($def as $raw_validation) {
@@ -78,6 +91,14 @@ class FapiValidationValidatorsManager extends DefaultPluginManager implements Ev
     }
   }
 
+  /**
+   * Process Error Message
+   *
+   * @param  Validator $validator Validator
+   * @param  array     $plugin    Plugin data
+   * @param  array     $element   Form Element
+   * @return string               Error messaage
+   */
   protected function processErrorMessage(Validator $validator, array $plugin, array $element) {
     // User defined error callback?
     if ($validator->hasErrorCallbackDefined()) {

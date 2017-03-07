@@ -9,14 +9,19 @@ namespace Drupal\fapi_validation;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\fapi_validation\Validator;
 
+/**
+ * Fapi Validation Validator Plugin Interface
+ */
 interface FapiValidationValidatorsInterface {
 
   /**
-   * Returns a message from the plugin.
+   * Execute validation
    *
+   * @param  Validator          $validator  Validator
+   * @param  array              $element    Form Element
+   * @param  FormStateInterface $form_state Form State
    * @return boolean
    */
-  // public function validate($value, array $params, array $element = null, FormStateInterface $form_state = null);
   public function validate(Validator $validator, array $element, FormStateInterface $form_state);
 
 }
