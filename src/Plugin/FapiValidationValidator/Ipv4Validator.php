@@ -14,7 +14,7 @@ use Drupal\fapi_validation\Validator;
 /**
  * @FapiValidationValidator(
  *   id = "ipv4",
- *   error_message = "Use only alpha characters at %field."
+ *   error_message = "Invalid format of %field."
  * )
  */
 class Ipv4Validator implements FapiValidationValidatorsInterface {

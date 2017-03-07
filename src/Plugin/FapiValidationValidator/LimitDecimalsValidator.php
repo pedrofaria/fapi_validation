@@ -14,7 +14,7 @@ use Drupal\fapi_validation\Validator;
 /**
  * @FapiValidationValidator(
  *   id = "limit_decimals",
- *   error_message = "Use only alpha characters at %field."
+ *   error_message = "Invalid value for %field or too many decimal digits."
  * )
  */
 class LimitDecimalsValidator implements FapiValidationValidatorsInterface {

@@ -14,7 +14,7 @@ use Drupal\fapi_validation\Validator;
 /**
  * @FapiValidationValidator(
  *   id = "alpha_dash",
- *   error_message = "Use only alpha characters at %field."
+ *   error_message = "Use only alpha numerics, hyphen and underscore at %field."
  * )
  */
 class AlphaValidator implements FapiValidationValidatorsInterface {

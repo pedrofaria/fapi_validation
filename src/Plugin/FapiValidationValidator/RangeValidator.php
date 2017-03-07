@@ -14,7 +14,7 @@ use Drupal\fapi_validation\Validator;
 /**
  * @FapiValidationValidator(
  *   id = "range",
- *   error_message = "Use only alpha characters at %field."
+ *   error_message = "%field value is out of range."
  * )
  */
 class RangeValidator implements FapiValidationValidatorsInterface {

@@ -15,7 +15,7 @@ use Drupal\Component\Utility\UrlHelper;
 /**
  * @FapiValidationValidator(
  *   id = "url",
- *   error_message = "%field is not a valid email."
+ *   error_message = "Invalid format of %field."
  * )
  */
 class UrlValidator implements FapiValidationValidatorsInterface {

@@ -14,7 +14,7 @@ use Drupal\fapi_validation\Validator;
 /**
  * @FapiValidationValidator(
  *   id = "match_field",
- *   error_message = "Use only alpha characters at %field."
+ *   error_message = "%field value does not match other field."
  * )
  */
 class MatchFieldValidator implements FapiValidationValidatorsInterface {
