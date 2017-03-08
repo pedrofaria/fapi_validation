@@ -74,7 +74,7 @@ class FapiValidationValidatorsManager extends DefaultPluginManager implements Ev
 
     foreach ($def as $raw_validation) {
       // Parse Validator
-      $validator = new Validator($raw_validation, $form_state->getValue($element['#name']));
+      $validator = new Validator($raw_validation, $form_state->getValue($element['#parents']));
 
       if (!$this->hasValidator($validator->getName())) {
         // @TODO throw Validator not found
@@ -86,7 +86,7 @@ class FapiValidationValidatorsManager extends DefaultPluginManager implements Ev
 
       if (!$instance->validate($validator, $element, $form_state)) {
         $error_message = $this->processErrorMessage($validator, $plugin, $element);
-        $form_state->setErrorByName(implode('][', $element['#parents']), $error_message);
+        $form_state->setError($element, $error_message);
       }
     }
   }
