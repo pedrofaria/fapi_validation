@@ -37,6 +37,7 @@ class SimpleForm extends FormBase {
       '#title' => $this->t('Title'),
       '#description' => $this->t('Title must be at least 5 characters in length.'),
       '#validators' => ['length[5, *]'],
+      '#filters' => ['uppercase'],
       '#required' => TRUE,
     ];
 
