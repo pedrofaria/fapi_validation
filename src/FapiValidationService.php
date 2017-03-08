@@ -32,8 +32,14 @@ class FapiValidationService {
     return $element;
   }
 
+  /**
+   * Perform FAPI Validation filters
+   * @param array              &$element    Forme Element
+   * @param FormStateInterface &$form_state Form State
+   */
   static public function filter(array &$element, FormStateInterface &$form_state) {
-    # code...
+    $manager = \Drupal::service('plugin.manager.fapi_validation_filters');
+    $manager->filter($element, $form_state);
   }
 
   /**
