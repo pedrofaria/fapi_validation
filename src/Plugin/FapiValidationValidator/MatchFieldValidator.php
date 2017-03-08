@@ -21,6 +21,8 @@ class MatchFieldValidator implements FapiValidationValidatorsInterface {
 
   /**
    * {@inheritdoc}
+   *
+   * @todo Find a way to set match field for nested element Ex. $form['contact']['city']. Maybe something like 'match_field[contact/field]' ?
    */
   public function validate(Validator $validator, array $element, FormStateInterface $form_state) {
     $params = $validator->getParams();
