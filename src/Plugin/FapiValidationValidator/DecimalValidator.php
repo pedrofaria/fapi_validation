@@ -31,7 +31,7 @@ class DecimalValidator implements FapiValidationValidatorsInterface {
       return (bool) preg_match($pattern, (string) $value);
     }
     else {
-      return (bool) preg_match('/\d+\.\d+/', $value);
+      return (bool) filter_var($value, FILTER_VALIDATE_FLOAT);
     }
     return FALSE;
   }
