@@ -19,7 +19,7 @@ class LowercaseFilter implements FapiValidationFiltersInterface {
    * {@inheritdoc}
    */
   public function filter(string $value) {
-    mb_strtolower($value);
+    return function_exists('mb_strtolower') ? mb_strtolower($value) : strtolower($value);
   }
 
 }

@@ -19,7 +19,7 @@ class UppercaseFilter implements FapiValidationFiltersInterface {
    * {@inheritdoc}
    */
   public function filter(string $value) {
-    return mb_strtoupper($value);
+    return function_exists('mb_strtoupper') ? mb_strtoupper($value) : strtoupper($value);
   }
 
 }

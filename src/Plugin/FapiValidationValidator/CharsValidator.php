@@ -25,8 +25,9 @@ class CharsValidator implements FapiValidationValidatorsInterface {
   public function validate(Validator $validator, array $element, FormStateInterface $form_state) {
     $params = $validator->getParams();
     $value = $validator->getValue();
+    $size = function_exists('mb_strlen') ? mb_strlen($value) : strlen($value);
 
-    for ($i = 0; $i < mb_strlen($value); $i++) {
+    for ($i = 0; $i < $size; $i++) {
       $current = substr($value, $i, 1);
       if (! in_array($current, $params)) {
         return FALSE;
