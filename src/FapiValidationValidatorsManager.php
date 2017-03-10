@@ -58,6 +58,11 @@ class FapiValidationValidatorsManager extends DefaultPluginManager {
    *   Form State Object.
    */
   public function validate(array &$element, FormStateInterface &$form_state) {
+    // If element is empty and not required, by pass rule validation.
+    if (!$element['#required'] && empty($element['#value']) && $element['#value'] !== 0) {
+     return;
+    }
+
     $def = $element['#validators'];
 
     foreach ($def as $raw_validation) {

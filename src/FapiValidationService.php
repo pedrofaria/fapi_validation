@@ -27,7 +27,7 @@ class FapiValidationService {
     if (isset($element['#filters']) && is_array($element['#filters'])) {
       // Check if element validate is already empty, and if so make variable for
       // merging in values an empty array and put at first place.
-      $element['#element_validate'] = array_merge(['\Drupal\fapi_validation\FapiValidationService::filter'], $element['#element_validate']);
+      array_unshift($element['#element_validate'], '\Drupal\fapi_validation\FapiValidationService::filter');
     }
 
     if (isset($element['#validators']) && is_array($element['#validators'])) {

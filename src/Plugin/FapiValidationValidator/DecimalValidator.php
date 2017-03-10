@@ -27,10 +27,8 @@ class DecimalValidator implements FapiValidationValidatorsInterface {
       $pattern = '/^[0-9]{' . $params[0] . '}\.[0-9]{' . $params[1] . '}$/';
       return (bool) preg_match($pattern, (string) $value);
     }
-    else {
-      return (bool) filter_var($value, FILTER_VALIDATE_FLOAT);
-    }
-    return FALSE;
+
+    return (bool) filter_var($value, FILTER_VALIDATE_FLOAT);
   }
 
 }
