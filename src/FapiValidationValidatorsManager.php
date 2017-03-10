@@ -1,25 +1,16 @@
 <?php
-/**
- * @file
- * Contains Drupal\fapi_validation\FapiValidationValidatorsManager.
- */
 
 namespace Drupal\fapi_validation;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\fapi_validation\Validator;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * A plugin manager for Fapi Validaton Validators Plugin.
  */
-class FapiValidationValidatorsManager extends DefaultPluginManager implements EventSubscriberInterface {
+class FapiValidationValidatorsManager extends DefaultPluginManager {
 
   /**
    * Constructs a MessageManager object.
@@ -46,34 +37,31 @@ class FapiValidationValidatorsManager extends DefaultPluginManager implements Ev
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public static function getSubscribedEvents() {
-    // $events[KernelEvents::REQUEST][] = array('performValidation');
-    return $events;
-  }
-
-  /**
-   * Check if Valildator Plugin exists
+   * Check if Valildator Plugin exists.
    *
-   * @param  string  $id Validators Name
-   * @return boolean
+   * @param string $id
+   *   Validators Name.
+   *
+   * @return bool
+   *   Check
    */
   public function hasValidator(string $id) {
     return in_array($id, array_keys($this->getDefinitions()));
   }
 
   /**
-   * Execute validation
+   * Execute validation.
    *
-   * @param array              &$element    Form Element
-   * @param FormStateInterface &$form_state Form State Object
+   * @param array &$element
+   *   Form Element.
+   * @param \Drupal\Core\Form\FormStateInterface &$form_state
+   *   Form State Object.
    */
   public function validate(array &$element, FormStateInterface &$form_state) {
     $def = $element['#validators'];
 
     foreach ($def as $raw_validation) {
-      // Parse Validator
+      // Parse Validator.
       $validator = new Validator($raw_validation, $form_state->getValue($element['#parents']));
 
       if (!$this->hasValidator($validator->getName())) {
@@ -92,12 +80,17 @@ class FapiValidationValidatorsManager extends DefaultPluginManager implements Ev
   }
 
   /**
-   * Process Error Message
+   * Process Error Message.
    *
-   * @param  Validator $validator Validator
-   * @param  array     $plugin    Plugin data
-   * @param  array     $element   Form Element
-   * @return string               Error messaage
+   * @param \Drupal\fapi_validation\Validator $validator
+   *   Validator.
+   * @param array $plugin
+   *   Plugin data.
+   * @param array $element
+   *   Form Element.
+   *
+   * @return string
+   *   Error messaage.
    */
   protected function processErrorMessage(Validator $validator, array $plugin, array $element) {
     // User defined error callback?
@@ -105,15 +98,15 @@ class FapiValidationValidatorsManager extends DefaultPluginManager implements Ev
       return call_user_func_array($validator->getErrorCallback(), [$validator, $element]);
     }
     // User defined error message?
-    else if ($validator->hasErrorMessageDefined()) {
+    elseif ($validator->hasErrorMessageDefined()) {
       $message = $validator->getErrorMessage();
     }
     // Plugin defined error callback?
-    else if ($plugin['error_callback'] !== null) {
+    elseif ($plugin['error_callback'] !== NULL) {
       return call_user_func_array([$plugin['class'], $plugin['error_callback']], [$validator, $element]);
     }
     // Plugin defined error message?
-    else if ($plugin['error_message'] !== null) {
+    elseif ($plugin['error_message'] !== NULL) {
       $message = $plugin['error_message'];
     }
     else {

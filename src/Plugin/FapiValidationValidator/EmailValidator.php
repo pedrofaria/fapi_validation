@@ -1,17 +1,14 @@
 <?php
 
-/**
- * Contains Drupal\fapi_validation\Plugin\FapiValidationValidator\EmailValidator.
- */
-
 namespace Drupal\fapi_validation\Plugin\FapiValidationValidator;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\fapi_validation\Annotation\FapiValidationValidator;
 use Drupal\fapi_validation\FapiValidationValidatorsInterface;
 use Drupal\fapi_validation\Validator;
 
 /**
+ * Fapi Validation Plugin for Email validatiton.
+ *
  * @FapiValidationValidator(
  *   id = "email",
  *   error_message = "%field is not a valid email."

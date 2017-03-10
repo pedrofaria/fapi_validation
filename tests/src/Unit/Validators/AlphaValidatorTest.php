@@ -24,12 +24,18 @@ class AlphaValidatorTest extends BaseValidatorTest {
     $this->plugin = new AlphaValidator();
   }
 
+  /**
+   * Testin valid string.
+   */
   public function testValidString() {
     $validator = new Validator('alpha', 'SimpleAlpha');
 
     $this->assertTrue($this->plugin->validate($validator, [], $this->decoratedFormState));
   }
 
+  /**
+   * Testing invalid string.
+   */
   public function testInvalidString() {
     $validator = new Validator('alpha', 'SimpleAlpha With !!@$@!Invalid');
 

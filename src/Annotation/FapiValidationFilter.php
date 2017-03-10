@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains Drupal\fapi_validation\Annotation\FapiValidFapiValidationFilterationValidator.
- */
 
 namespace Drupal\fapi_validation\Annotation;
 

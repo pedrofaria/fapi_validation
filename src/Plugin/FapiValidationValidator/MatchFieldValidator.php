@@ -1,17 +1,14 @@
 <?php
 
-/**
- * Contains Drupal\fapi_validation\Plugin\FapiValidationValidator\MatchFieldValidator.
- */
-
 namespace Drupal\fapi_validation\Plugin\FapiValidationValidator;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\fapi_validation\Annotation\FapiValidationValidator;
 use Drupal\fapi_validation\FapiValidationValidatorsInterface;
 use Drupal\fapi_validation\Validator;
 
 /**
+ * Fapi Validation Plugin for Match Field validation.
+ *
  * @FapiValidationValidator(
  *   id = "match_field",
  *   error_message = "%field value does not match other field."

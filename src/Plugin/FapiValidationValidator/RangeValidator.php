@@ -1,17 +1,14 @@
 <?php
 
-/**
- * Contains Drupal\fapi_validation\Plugin\FapiValidationValidator\RangeValidator.
- */
-
 namespace Drupal\fapi_validation\Plugin\FapiValidationValidator;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\fapi_validation\Annotation\FapiValidationValidator;
 use Drupal\fapi_validation\FapiValidationValidatorsInterface;
 use Drupal\fapi_validation\Validator;
 
 /**
+ * Fapi Validation Plugin for Range validation.
+ *
  * @FapiValidationValidator(
  *   id = "range",
  *   error_message = "%field value is out of range."
@@ -31,4 +28,5 @@ class RangeValidator implements FapiValidationValidatorsInterface {
 
     return ($min <= $value && $max >= $value);
   }
+
 }

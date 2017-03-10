@@ -2,7 +2,6 @@
 
 namespace Drupal\fapiv_example\Form;
 
-
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -24,7 +23,7 @@ class SimpleForm extends FormBase {
    *
    * @param array $form
    *   Default form array structure.
-   * @param FormStateInterface $form_state
+   * @param Drupal\Core\Form\FormStateInterface $form_state
    *   Object containing current form state.
    *
    * @return array
@@ -47,7 +46,7 @@ class SimpleForm extends FormBase {
       '#description' => $this->t('The Value should be JonhDoe.'),
       '#validators' => [
         ['rule' => 'length[7]', 'error' => 'Wrong name size of field %field.'],
-        'custom_validator'
+        'custom_validator',
       ],
       '#required' => TRUE,
     ];
@@ -89,7 +88,7 @@ class SimpleForm extends FormBase {
    *
    * @param array $form
    *   The render array of the currently built form.
-   * @param FormStateInterface $form_state
+   * @param Drupal\Core\Form\FormStateInterface $form_state
    *   Object describing the current state of the form.
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
@@ -98,7 +97,7 @@ class SimpleForm extends FormBase {
      * with the title.
      */
     $title = $form_state->getValue('title');
-    drupal_set_message(t('You specified a title of %title.', ['%title' => $title]));
+    drupal_set_message($this->t('You specified a title of %title.', ['%title' => $title]));
   }
 
 }

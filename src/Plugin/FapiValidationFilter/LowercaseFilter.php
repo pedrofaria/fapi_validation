@@ -1,14 +1,12 @@
 <?php
 
-/**
- * Contains Drupal\fapi_validation\Plugin\FapiValidationFilter\LowercaseFilter.
- */
-
 namespace Drupal\fapi_validation\Plugin\FapiValidationFilter;
 
 use Drupal\fapi_validation\FapiValidationFiltersInterface;
 
 /**
+ * Fapi Validation Plugin for Lowercase filter.
+ *
  * @FapiValidationFilter(
  *   id = "lowercase"
  * )

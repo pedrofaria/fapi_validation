@@ -1,14 +1,12 @@
 <?php
 
-/**
- * Contains Drupal\fapi_validation\Plugin\FapiValidationFilter\HtmlEntitiesFilter.
- */
-
 namespace Drupal\fapi_validation\Plugin\FapiValidationFilter;
 
 use Drupal\fapi_validation\FapiValidationFiltersInterface;
 
 /**
+ * Fapi Validation Plugin for HTML Entities filter.
+ *
  * @FapiValidationFilter(
  *   id = "html_entitites"
  * )

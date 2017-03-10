@@ -1,14 +1,12 @@
 <?php
 
-/**
- * Contains Drupal\fapi_validation\Plugin\FapiValidationFilter\UppercaseFilter.
- */
-
 namespace Drupal\fapi_validation\Plugin\FapiValidationFilter;
 
 use Drupal\fapi_validation\FapiValidationFiltersInterface;
 
 /**
+ * Fapi Validation Plugin for Uppercase filter.
+ *
  * @FapiValidationFilter(
  *   id = "uppercase"
  * )

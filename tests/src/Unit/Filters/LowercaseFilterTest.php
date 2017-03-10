@@ -13,8 +13,11 @@ use Drupal\fapi_validation\Plugin\FapiValidationFilter\LowercaseFilter;
  */
 class LowercaseFilterTest extends UnitTestCase {
 
+  /**
+   * Testign lowercasing string.
+   */
   public function testValidString() {
-    $plugin = new LowercaseFilter;
+    $plugin = new LowercaseFilter();
     $this->assertEquals('test', $plugin->filter('TesT'));
   }
 

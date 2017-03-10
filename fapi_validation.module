@@ -1,7 +1,8 @@
 <?php
 
 /**
- * @file Form API validation module
+ * @file
+ * Form API validation module.
  */
 
 /**
@@ -11,8 +12,7 @@
  */
 function fapi_validation_element_info_alter(array &$info) {
   // Loop through all form element types and only hit input variants.
-  foreach ($info as $type_name => $type_info ) {
-    // var_dump($type_info['#input']); exit;
+  foreach ($info as $type_name => $type_info) {
     if (isset($type_info['#input']) && $type_info['#input']) {
       // Processes the form element on form creation.
       $info[$type_name]['#process'][] = '\Drupal\fapi_validation\FapiValidationService::process';

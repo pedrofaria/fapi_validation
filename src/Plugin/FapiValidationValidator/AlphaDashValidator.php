@@ -1,17 +1,14 @@
 <?php
 
-/**
- * Contains Drupal\fapi_validation\Plugin\FapiValidationValidator\AlphaDashValidator.
- */
-
 namespace Drupal\fapi_validation\Plugin\FapiValidationValidator;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\fapi_validation\Annotation\FapiValidationValidator;
 use Drupal\fapi_validation\FapiValidationValidatorsInterface;
 use Drupal\fapi_validation\Validator;
 
 /**
+ * Fapi Validation Plugin for Alpha Dash validation.
+ *
  * @FapiValidationValidator(
  *   id = "alpha_dash",
  *   error_message = "Use only alpha numerics, hyphen and underscore at %field."

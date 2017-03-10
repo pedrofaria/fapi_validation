@@ -1,17 +1,14 @@
 <?php
 
-/**
- * Contains Drupal\fapi_validation\Plugin\FapiValidationValidator\CharsValidator.
- */
-
 namespace Drupal\fapi_validation\Plugin\FapiValidationValidator;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\fapi_validation\Annotation\FapiValidationValidator;
 use Drupal\fapi_validation\FapiValidationValidatorsInterface;
 use Drupal\fapi_validation\Validator;
 
 /**
+ * Fapi Validation Plugin for Character validation.
+ *
  * @FapiValidationValidator(
  *   id = "chars",
  *   error_message = "Use only alpha characters at %field."
@@ -29,7 +26,7 @@ class CharsValidator implements FapiValidationValidatorsInterface {
 
     for ($i = 0; $i < $size; $i++) {
       $current = substr($value, $i, 1);
-      if (! in_array($current, $params)) {
+      if (!in_array($current, $params)) {
         return FALSE;
       }
     }

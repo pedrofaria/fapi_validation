@@ -24,6 +24,9 @@ class DecimalValidatorTest extends BaseValidatorTest {
     $this->plugin = new DecimalValidator();
   }
 
+  /**
+   * Testing decimal and negative decimal without params.
+   */
   public function testNegativeDecimalNoParams() {
     $validator = new Validator('decimal', '123.23');
     $this->assertTrue($this->plugin->validate($validator, [], $this->decoratedFormState));
@@ -32,6 +35,9 @@ class DecimalValidatorTest extends BaseValidatorTest {
     $this->assertTrue($this->plugin->validate($validator, [], $this->decoratedFormState));
   }
 
+  /**
+   * Testing integer.
+   */
   public function testIntegerNoParams() {
     $validator = new Validator('decimal', '1525');
     $this->assertTrue($this->plugin->validate($validator, [], $this->decoratedFormState));
@@ -40,6 +46,9 @@ class DecimalValidatorTest extends BaseValidatorTest {
     $this->assertTrue($this->plugin->validate($validator, [], $this->decoratedFormState));
   }
 
+  /**
+   * Testing negative decimal value.
+   */
   public function testNegativeDecimal() {
     $validator = new Validator('decimal', '-123.23');
 

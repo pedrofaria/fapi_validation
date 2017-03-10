@@ -13,8 +13,11 @@ use Drupal\fapi_validation\Plugin\FapiValidationFilter\TrimFilter;
  */
 class TrimFilterTest extends UnitTestCase {
 
+  /**
+   * Testing valid string.
+   */
   public function testValidString() {
-    $plugin = new TrimFilter;
+    $plugin = new TrimFilter();
     $this->assertEquals('test', $plugin->filter('   test    '));
   }
 

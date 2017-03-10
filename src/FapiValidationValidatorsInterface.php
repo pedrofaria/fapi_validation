@@ -1,26 +1,26 @@
 <?php
-/**
- * @file
- * Contains Drupal\fapi_validation\FapiValidationValidatorsInterface.
- */
 
 namespace Drupal\fapi_validation;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\fapi_validation\Validator;
 
 /**
- * Fapi Validation Validator Plugin Interface
+ * Fapi Validation Validator Plugin Interface.
  */
 interface FapiValidationValidatorsInterface {
 
   /**
-   * Execute validation
+   * Execute validation.
    *
-   * @param  Validator          $validator  Validator
-   * @param  array              $element    Form Element
-   * @param  FormStateInterface $form_state Form State
-   * @return boolean
+   * @param \Drupal\fapi_validation\Validator $validator
+   *   Validator.
+   * @param array $element
+   *   Form Element.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   Form State.
+   *
+   * @return bool
+   *   Check.
    */
   public function validate(Validator $validator, array $element, FormStateInterface $form_state);
 

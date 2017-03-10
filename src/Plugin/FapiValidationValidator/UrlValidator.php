@@ -1,18 +1,15 @@
 <?php
 
-/**
- * Contains Drupal\fapi_validation\Plugin\FapiValidationValidator\UrlValidator.
- */
-
 namespace Drupal\fapi_validation\Plugin\FapiValidationValidator;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\fapi_validation\Annotation\FapiValidationValidator;
 use Drupal\fapi_validation\FapiValidationValidatorsInterface;
 use Drupal\fapi_validation\Validator;
 use Drupal\Component\Utility\UrlHelper;
 
 /**
+ * Fapi Validation Plugin for URL validation.
+ *
  * @FapiValidationValidator(
  *   id = "url",
  *   error_message = "Invalid format of %field."

@@ -1,17 +1,14 @@
 <?php
 
-/**
- * Contains Drupal\fapi_validation\Plugin\FapiValidationValidator\LimitDecimalsValidator.
- */
-
 namespace Drupal\fapi_validation\Plugin\FapiValidationValidator;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\fapi_validation\Annotation\FapiValidationValidator;
 use Drupal\fapi_validation\FapiValidationValidatorsInterface;
 use Drupal\fapi_validation\Validator;
 
 /**
+ * Fapi Validation Plugin for Limit Decimals.
+ *
  * @FapiValidationValidator(
  *   id = "limit_decimals",
  *   error_message = "Invalid value for %field or too many decimal digits."
@@ -26,7 +23,7 @@ class LimitDecimalsValidator implements FapiValidationValidatorsInterface {
     $params = $validator->getParams();
     $value = $validator->getValue();
 
-    if ( !is_numeric($value) ) {
+    if (!is_numeric($value)) {
       return FALSE;
     }
     if (count($params) > 0) {
@@ -36,4 +33,5 @@ class LimitDecimalsValidator implements FapiValidationValidatorsInterface {
     }
     return TRUE;
   }
+
 }

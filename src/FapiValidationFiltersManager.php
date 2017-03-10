@@ -1,25 +1,16 @@
 <?php
-/**
- * @file
- * Contains Drupal\fapi_validation\FapiValidationFiltersManager.
- */
 
 namespace Drupal\fapi_validation;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\fapi_validation\Validator;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * A plugin manager for Fapi Validaton Filters Plugin.
  */
-class FapiValidationFiltersManager extends DefaultPluginManager implements EventSubscriberInterface {
+class FapiValidationFiltersManager extends DefaultPluginManager {
 
   /**
    * Constructs a MessageManager object.
@@ -46,29 +37,25 @@ class FapiValidationFiltersManager extends DefaultPluginManager implements Event
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public static function getSubscribedEvents() {
-    // $events[KernelEvents::REQUEST][] = array('performValidation');
-    return $events;
-  }
-
-  /**
-   * Check if Filter Plugin exists
+   * Check if Filter Plugin exists.
    *
-   * @param  string  $id Validators Name
-   * @return boolean
+   * @param string $id
+   *   Validators Name.
+   *
+   * @return bool
    */
   public function hasFilter(string $id) {
-    // var_dump($this->getDefinitions()); exit;
+    // var_dump($this->getDefinitions()); exit;.
     return in_array($id, array_keys($this->getDefinitions()));
   }
 
   /**
-   * Execute filter
+   * Execute filter.
    *
-   * @param array              &$element    Form Element
-   * @param FormStateInterface &$form_state Form State Object
+   * @param array &$element
+   *   Form Element.
+   * @param \Drupal\Core\Form\FormStateInterface &$form_state
+   *   Form State Object.
    */
   public function filter(array &$element, FormStateInterface &$form_state) {
     $def = $element['#filters'];
@@ -89,4 +76,5 @@ class FapiValidationFiltersManager extends DefaultPluginManager implements Event
       $form_state->setValue($element['#parents'], $new_value);
     }
   }
+
 }

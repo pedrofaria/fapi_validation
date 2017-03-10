@@ -13,8 +13,11 @@ use Drupal\fapi_validation\Plugin\FapiValidationFilter\UppercaseFilter;
  */
 class UppercaseFilterTest extends UnitTestCase {
 
+  /**
+   * Testing uppercasing.
+   */
   public function testValidString() {
-    $plugin = new UppercaseFilter;
+    $plugin = new UppercaseFilter();
     $this->assertEquals('TEST', $plugin->filter('test'));
   }
 
