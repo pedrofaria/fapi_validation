@@ -7,6 +7,9 @@ use Drupal\Tests\UnitTestCase;
 
 /**
  * Tests generation of ice cream.
+ *
+ * @group fapi_validation
+ * @group fapi_validation_validators
  */
 class BaseValidatorTest extends UnitTestCase {
 
