@@ -11,7 +11,7 @@ use Drupal\fapi_validation\Validator;
  * @group fapi_validation
  * @group fapi_validation_validators
  */
-class AlphaValidatorTest extends BaseValidatorTest {
+class AlphaValidatorTest extends BaseValidator {
 
   protected $plugin;
 

@@ -11,7 +11,7 @@ use Drupal\fapi_validation\Validator;
  * @group fapi_validation
  * @group fapi_validation_validators
  */
-class DecimalValidatorTest extends BaseValidatorTest {
+class DecimalValidatorTest extends BaseValidator {
 
   protected $plugin;
 
