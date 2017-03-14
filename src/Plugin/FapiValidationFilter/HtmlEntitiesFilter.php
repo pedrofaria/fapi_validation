@@ -16,7 +16,7 @@ class HtmlEntitiesFilter implements FapiValidationFiltersInterface {
   /**
    * {@inheritdoc}
    */
-  public function filter(string $value) {
+  public function filter($value) {
     return htmlentities(html_entity_decode($value));
   }
 

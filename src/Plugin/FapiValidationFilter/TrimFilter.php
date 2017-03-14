@@ -16,7 +16,7 @@ class TrimFilter implements FapiValidationFiltersInterface {
   /**
    * {@inheritdoc}
    */
-  public function filter(string $value) {
+  public function filter($value) {
     return trim($value);
   }
 

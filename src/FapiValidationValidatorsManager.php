@@ -45,7 +45,7 @@ class FapiValidationValidatorsManager extends DefaultPluginManager {
    * @return bool
    *   Check
    */
-  public function hasValidator(string $id) {
+  public function hasValidator($id) {
     return in_array($id, array_keys($this->getDefinitions()));
   }
 

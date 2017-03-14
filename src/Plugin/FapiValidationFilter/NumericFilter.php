@@ -16,7 +16,7 @@ class NumericFilter implements FapiValidationFiltersInterface {
   /**
    * {@inheritdoc}
    */
-  public function filter(string $value) {
+  public function filter($value) {
     return preg_replace('/[^0-9]+/', '', $value);
   }
 

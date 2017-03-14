@@ -16,6 +16,6 @@ interface FapiValidationFiltersInterface {
    * @return string
    *   Processed Value.
    */
-  public function filter(string $value);
+  public function filter($value);
 
 }

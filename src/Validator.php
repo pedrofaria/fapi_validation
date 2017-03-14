@@ -56,7 +56,7 @@ class Validator {
    * @param string $value
    *   Form element value.
    */
-  public function __construct($raw_validator, string $value) {
+  public function __construct($raw_validator, $value) {
     $this->rawValidator = $raw_validator;
     $this->value = $value;
     $this->parse();
