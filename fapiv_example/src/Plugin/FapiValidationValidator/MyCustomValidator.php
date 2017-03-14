@@ -39,9 +39,7 @@ class MyCustomValidator implements FapiValidationValidatorsInterface {
   public static function processError(Validator $validator, array $element) {
     $params = [
       '%value' => $validator->getValue(),
-      '%field' => $element[
-        '#title'
-      ]
+      '%field' => $element['#title'],
     ];
     return \t("You must enter 'JonhDoe' as value and not '%value' at field %field", $params);
   }

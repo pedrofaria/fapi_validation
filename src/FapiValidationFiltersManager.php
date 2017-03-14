@@ -43,6 +43,7 @@ class FapiValidationFiltersManager extends DefaultPluginManager {
    *   Validators Name.
    *
    * @return bool
+   *   Check.
    */
   public function hasFilter(string $id) {
     // var_dump($this->getDefinitions()); exit;.

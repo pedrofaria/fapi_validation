@@ -13,7 +13,8 @@ interface FapiValidationFiltersInterface {
    * @param string $value
    *   Form Element Value.
    *
-   * @return string Processed Value.
+   * @return string
+   *   Processed Value.
    */
   public function filter(string $value);
 
