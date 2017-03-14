@@ -11,7 +11,7 @@ use Drupal\Tests\UnitTestCase;
  * @group fapi_validation
  * @group fapi_validation_validators
  */
-class BaseValidator extends UnitTestCase {
+abstract class BaseValidator extends UnitTestCase {
 
   /**
    * The decorated form state.
