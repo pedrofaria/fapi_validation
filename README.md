@@ -61,9 +61,152 @@ $form['myfield'] = array(
 function mymodule_validation_error_msg($rule, $params, $element, $form_state) {
   return t("My custom error message for %field", array("%field" => $element['#title']));
 }
-?>
+
 ```
 
-## Developer
+## Custom Validator / Filter
 
-@TODO
+The Validator or Filter was built using the Drupal Plugin API, so to create your own
+custom validator or filter you should use the `FapiValidationValidator` or 
+`FapiValidationFilter` Annontation and it respective implementation class.
+
+### Validators
+
+First you have to create a file at src/**Plugin/FapiValidationValidator**/MyCustomValidator.php
+path of your module with the class implementation.
+
+```php
+<?php
+
+namespace Drupal\my_module\Plugin\FapiValidationValidator;
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\fapi_validation\FapiValidationValidatorsInterface;
+use Drupal\fapi_validation\Validator;
+
+/**
+ * Provides a custom validation.
+ *
+ * Field must have JonhDoe as value.
+ *
+ * @FapiValidationValidator(
+ *   id = "custom_validator",
+ *   error_message = "Type the text 'custom value' at field %field."
+ * )
+ */
+class MyCustomValidator implements FapiValidationValidatorsInterface {
+  /**
+   * {@inheritdoc}
+   */
+  public function validate(Validator $validator, array $element, FormStateInterface $form_state) {
+    return $validator->getValue() == 'custom value';
+  }
+}
+
+```
+
+Now you are able to use at your form definiton.
+
+```php
+
+//...
+
+    $form['custom_field'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Custom Field'),
+      '#description' => $this->t('The Value should be "custom value".'),
+      '#validators' => [
+        'custom_validator',
+      ],
+      '#required' => TRUE,
+    ];
+
+//...
+```
+
+#### Processed Error Messages
+
+If you need create a error message programaticaly, change the `error_message` key at 
+annotation to `error_callback` with the **public static** method name.
+
+```php
+//...
+
+/**
+ * @FapiValidationValidator(
+ *   id = "custom_validator",
+ *   error_callback = "processError"
+ * )
+ */
+class MyCustomValidator implements FapiValidationValidatorsInterface {
+  //...
+  
+  /**
+   * Process custom error.
+   *
+   * @param Drupal\fapi_validation\Validator $validator
+   *   Validator.
+   * @param array $element
+   *   Form element.
+   *
+   * @return string
+   *   Error message.
+   */
+  public static function processError(Validator $validator, array $element) {
+    $params = [
+      '%value' => $validator->getValue(),
+      '%field' => $element['#title'],
+    ];
+    return \t("You must enter 'custom value' as value and not '%value' at field %field", $params);
+  }
+}
+```
+
+### Filters
+
+First you have to create a file at src/**Plugin/FapiValidationFilter**/MyCustomFilter.php
+path of your module with the class implementation.
+
+```php
+<?php
+
+namespace Drupal\my_module\Plugin\FapiValidationFilter;
+
+use Drupal\fapi_validation\FapiValidationFiltersInterface;
+
+/**
+ * Fapi Validation Plugin for remove Numeric filter.
+ *
+ * @FapiValidationFilter(
+ *   id = "custom_filter"
+ * )
+ */
+class MyCustomFilter implements FapiValidationFiltersInterface {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function filter($value) {
+    return preg_replace('/[^0-5]+/', '', $value);
+  }
+}
+
+```
+
+Now you are able to use at your form definiton.
+
+```php
+
+//...
+
+    $form['custom_field'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Custom Field'),
+      '#filters' => [
+        'custom_filter',
+      ],
+      '#required' => TRUE,
+    ];
+
+//...
+```
