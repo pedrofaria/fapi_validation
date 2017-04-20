@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\fapi_validation\Unit\Validators;
+namespace Drupal\Tests\fapi_validation\Unit\Plugin\Validators;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Tests\UnitTestCase;

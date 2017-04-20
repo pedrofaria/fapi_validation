@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\fapi_validation\Unit\Filters;
+namespace Drupal\Tests\fapi_validation\Unit\Plugin\Filters;
 
 use Drupal\Tests\UnitTestCase;
 use Drupal\fapi_validation\Plugin\FapiValidationFilter\StripTagsFilter;
