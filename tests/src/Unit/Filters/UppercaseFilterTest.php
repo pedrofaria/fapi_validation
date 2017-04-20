@@ -6,7 +6,7 @@ use Drupal\Tests\UnitTestCase;
 use Drupal\fapi_validation\Plugin\FapiValidationFilter\UppercaseFilter;
 
 /**
- * Tests generation of ice cream.
+ * Tests filter UppercaseFilter
  *
  * @group fapi_validation
  * @group fapi_validation_filters
