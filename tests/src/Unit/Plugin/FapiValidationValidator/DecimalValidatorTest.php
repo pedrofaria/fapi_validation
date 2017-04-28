@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\fapi_validation\Unit\Plugin\Validators;
+namespace Drupal\Tests\fapi_validation\Unit\Plugin\FapiValidationValidator;
 
 use Drupal\fapi_validation\Plugin\FapiValidationValidator\DecimalValidator;
 use Drupal\fapi_validation\Validator;
